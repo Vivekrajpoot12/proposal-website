@@ -1,0 +1,456 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Proposal ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+/* Main box */
+.container{
+    width:100%;
+    max-width:700px;
+    text-align:center;
+    position:relative;
+    z-index:5;
+}
+
+/* Boy and Girl */
+.characters{
+    display:flex;
+    justify-content:center;
+    align-items:end;
+    gap:80px;
+    margin-bottom:25px;
+}
+
+.person{
+    position:relative;
+    animation:bounce 2s infinite;
+}
+
+.head{
+    width:75px;
+    height:75px;
+    background:#ffd0a6;
+    border-radius:50%;
+    margin:auto;
+    position:relative;
+    border:3px solid rgba(0,0,0,.1);
+}
+
+.hair{
+    position:absolute;
+    width:80px;
+    height:35px;
+    background:#351b10;
+    top:-5px;
+    left:-3px;
+    border-radius:50% 50% 30% 20%;
+}
+
+.body{
+    width:90px;
+    height:110px;
+    background:#4c6fff;
+    border-radius:35px 35px 10px 10px;
+    margin-top:5px;
+}
+
+.girl .body{
+    background:#ff4f91;
+}
+
+.eyes{
+    position:absolute;
+    top:35px;
+    left:18px;
+    font-size:18px;
+    letter-spacing:15px;
+}
+
+/* Flower */
+.flower{
+    position:absolute;
+    font-size:55px;
+    left:70px;
+    top:80px;
+    animation:giveFlower 3s forwards;
+    z-index:10;
+}
+
+@keyframes giveFlower{
+    0%{
+        transform:translateX(-100px);
+        opacity:0;
+    }
+
+    40%{
+        transform:translateX(-50px);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateX(10px);
+        opacity:1;
+    }
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/* Text */
+.intro{
+    font-size:25px;
+    margin-bottom:15px;
+    animation:fadeIn 2s;
+}
+
+.loveText{
+    font-size:44px;
+    font-weight:bold;
+    text-shadow:0 0 20px white;
+    animation:heartbeat 1s infinite;
+    margin:15px 0;
+}
+
+.question{
+    font-size:22px;
+    margin-bottom:25px;
+}
+
+/* Buttons */
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+button{
+    border:none;
+    padding:14px 32px;
+    border-radius:40px;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.yes{
+    background:white;
+    color:#ff4081;
+}
+
+.no{
+    background:#333;
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+/* Result screen */
+.result{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    z-index:100;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+}
+
+.resultEmoji{
+    font-size:100px;
+    animation:heartbeat 1s infinite;
+}
+
+.resultText{
+    font-size:38px;
+    margin-top:20px;
+}
+
+/* Falling flowers */
+.falling{
+    position:fixed;
+    top:-60px;
+    font-size:30px;
+    animation:fall linear forwards;
+    z-index:150;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+/* Fade */
+.fadeOut{
+    animation:fadeOut 1.5s forwards;
+}
+
+@keyframes fadeOut{
+    to{
+        opacity:0;
+        transform:scale(1.3);
+    }
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+    .characters{
+        gap:35px;
+    }
+
+    .head{
+        width:60px;
+        height:60px;
+    }
+
+    .hair{
+        width:65px;
+        height:30px;
+    }
+
+    .body{
+        width:70px;
+        height:85px;
+    }
+
+    .flower{
+        font-size:42px;
+        left:45px;
+        top:65px;
+    }
+
+    .intro{
+        font-size:20px;
+    }
+
+    .loveText{
+        font-size:34px;
+    }
+
+    .question{
+        font-size:19px;
+    }
+
+    button{
+        padding:12px 25px;
+        font-size:17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+
+    <div class="characters">
+
+        <!-- Boy -->
+        <div class="person boy">
+            <div class="head">
+                <div class="hair"></div>
+                <div class="eyes">• •</div>
+            </div>
+            <div class="body"></div>
+
+            <!-- Flower -->
+            <div class="flower">🌹</div>
+        </div>
+
+        <!-- Girl -->
+        <div class="person girl">
+            <div class="head">
+                <div class="hair"></div>
+                <div class="eyes">• •</div>
+            </div>
+            <div class="body"></div>
+        </div>
+
+    </div>
+
+    <div class="intro">
+        👦 has something special to say...
+    </div>
+
+    <div class="loveText">
+        I LOVE YOU ❤️
+    </div>
+
+    <div class="question">
+        Will you be mine? 💕
+    </div>
+
+    <div class="buttons">
+
+        <button class="yes" onclick="yesAnswer()">
+            YES ❤️
+        </button>
+
+        <button class="no" onclick="noAnswer()">
+            NO 😅
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- Result Screen -->
+<div class="result" id="result">
+
+    <div class="resultEmoji" id="resultEmoji"></div>
+
+    <div class="resultText" id="resultText"></div>
+
+</div>
+
+
+<script>
+
+/* YES BUTTON */
+function yesAnswer(){
+
+    document.getElementById("result").style.display="flex";
+
+    document.getElementById("resultEmoji").innerHTML="💖";
+
+    document.getElementById("resultText").innerHTML=
+        "She said YES! ❤️🥰";
+
+    /* Flower Rain */
+    for(let i=0;i<80;i++){
+
+        setTimeout(function(){
+
+            let flower=document.createElement("div");
+
+            flower.className="falling";
+
+            const flowers=["🌹","🌸","🌺","🌷","💐","❤️"];
+
+            flower.innerHTML=
+                flowers[Math.floor(Math.random()*flowers.length)];
+
+            flower.style.left=Math.random()*100+"vw";
+
+            flower.style.animationDuration=
+                (2+Math.random()*3)+"s";
+
+            flower.style.fontSize=
+                (20+Math.random()*25)+"px";
+
+            document.body.appendChild(flower);
+
+            setTimeout(function(){
+                flower.remove();
+            },5000);
+
+        },i*50);
+    }
+
+    /* Close/fade after animation */
+    setTimeout(function(){
+        closeWindow();
+    },5000);
+}
+
+
+/* NO BUTTON */
+function noAnswer(){
+
+    document.getElementById("result").style.display="flex";
+
+    document.getElementById("resultEmoji").innerHTML="😡";
+
+    document.getElementById("resultText").innerHTML=
+        "Oh no! 😤💔";
+
+    setTimeout(function(){
+        closeWindow();
+    },3000);
+}
+
+
+/* Try to close browser window */
+function closeWindow(){
+
+    window.close();
+
+    /* If browser blocks window.close(),
+       make the page disappear instead */
+    setTimeout(function(){
+
+        document.body.classList.add("fadeOut");
+
+    },500);
+
+}
+
+</script>
+
+</body>
+</html>
+```
